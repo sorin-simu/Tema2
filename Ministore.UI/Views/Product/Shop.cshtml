@@ -1,0 +1,77 @@
+﻿@model Ministore.UI.Models.ShopViewModel
+
+
+@{
+    ViewBag.Title = "Shop";
+}
+
+<br />
+<fieldset>
+    <h2>Shopping page</h2>
+    <div class="shoppingProductsList">
+        <table class="table-responsive table-hover table-striped table">
+            <tr>
+                <th>
+                   Name
+                </th>
+                <th>
+                   Price
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price) €
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add to chart", "AddToShoppingCart", new { id = item.Id }) 
+                        @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="shoppingCart">
+        <div class="shoppingCartTitle">
+            <img src="~/Content/Images/shopping-cart-hi.png" class="shoppingCartImg" />
+            Your Shopping Cart:
+            @if (Model.ProductsInShoppingCart != null)
+            {
+                <table class="table-responsive table">
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.ProductsInShoppingCart)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price) €
+                            </td>
+
+                        </tr>
+                    }
+                </table>
+                <hr/>
+               
+        if (Model.ProductsInShoppingCart.Count != 0)
+         {
+             <p>Total Price: @Model.TotalPrice €</p>
+             <p style="float:left;width:70%;"> <a class="btn btn-info btn-lg" href="~/Product/ClearSession">Make order </a> </p>
+             <p style="float:right;width:30%; margin-top:10px;"> <a class="btn btn-danger btn-sm" href="~/Product/ClearSession">Clear all </a> </p>
+         }
+            }
+        </div>
+    </div>         
+</fieldset>

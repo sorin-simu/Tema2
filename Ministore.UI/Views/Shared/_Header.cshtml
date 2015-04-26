@@ -1,0 +1,47 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("Ministore", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+        }
+        else
+        {
+            @Html.ActionLink("Ministore", "UserDashboard", "Account", new { area = "" }, new { @class = "navbar-brand" })
+        }  
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                }
+                <li>@Html.ActionLink("Shop","Shop","Product")</li>
+                @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Login", "Index", "Account")</li>
+                }
+                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Dashboard", "UserDashboard", "Account")</li>
+                }
+                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Manage products", "ListOfProducts", "Product")</li>
+                }
+            </ul>
+            <div class="userInfo">
+                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <p>Welcome @HttpContext.Current.User.Identity.Name ! (@Html.ActionLink("logout", "Logout", "Account"))</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

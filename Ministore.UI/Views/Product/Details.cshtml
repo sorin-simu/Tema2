@@ -1,0 +1,28 @@
+﻿@model Ministore.UI.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <br/>
+    <div class="col-md-2 control-label">
+        @Html.DisplayNameFor(model => model.Name) :
+    </div>
+    <div class="col-md-2 control-label">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+    <hr/>
+    <div class="col-md-2 control-label">
+        @Html.DisplayNameFor(model => model.Price) :
+    </div>
+    <div class="col-md-2 control-label">
+        @Html.DisplayFor(model => model.Price) €
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "ListOfProducts")
+</p>
