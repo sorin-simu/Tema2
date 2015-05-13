@@ -3,6 +3,7 @@ using Ministore.BusinessLogic.Services.Implementations;
 using Ministore.BusinessLogic.Services.Interfaces;
 using Ministore.DataAccess.Infrastructure;
 using Ninject.Modules;
+using Ministore.BusinessLogic.Services.Implementations.ProductsService;
 
 namespace Ministore.BusinessLogic.Infrastructure
 {

@@ -10,6 +10,15 @@
     <p class="newProduct">
         <a class="btn btn-info btn-lg" href="~/Product/Create">+ New Product </a>
     </p>
+    <p class="exporters">
+        <a class="btn btn-success btn-md" type="submit" onclick="Product.ExportJson();">Export in Json Format </a>
+    </p>
+    @using (Html.BeginForm("ExportCsv", "Product", FormMethod.Post))
+    {
+    <p class="exporters">
+        <input class="btn btn-success btn-md" type="submit" value="Export in CSV Format" />
+    </p>
+    }
     <table class="table-responsive table-bordered table">
         <tr>
             <th>
@@ -39,4 +48,5 @@
         }
 
     </table>
+    <div id="dialog" class="dialog"></div>
 </fieldset>

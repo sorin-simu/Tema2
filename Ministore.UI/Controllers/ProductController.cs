@@ -9,6 +9,8 @@ using Ministore.UI.Attributes;
 using Ministore.UI.Models;
 using Ninject.Infrastructure.Language;
 using WebGrease.Css.Extensions;
+using Ministore.BusinessLogic.Services.Implementations.ProductService;
+using Ministore.BusinessLogic.Services.Implementations;
 
 namespace Ministore.UI.Controllers
 {
@@ -163,5 +165,30 @@ namespace Ministore.UI.Controllers
             };
         }
 
+        [HttpGet]
+        public JsonResult GetAllProducts()
+        {
+            var products = _productService.GetAll();
+            return Json(products, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult ExportJson(string products)
+        {
+            var factory = new FactoryExporter<JsonExporter>();
+            var exporter = factory.CreateExporter();
+            exporter.Export(products);
+            return RedirectToAction("ListOfProducts");
+        }
+
+        [HttpPost]
+        public ActionResult ExportCsv()
+        {
+            var allProducts = _productService.GetAll().ToList();
+            var factory = new FactoryExporter<CsvExporter>();
+            var exporter = factory.CreateExporter();
+            exporter.Export(allProducts);
+            return RedirectToAction("ListOfProducts");
+        }
     }
 }

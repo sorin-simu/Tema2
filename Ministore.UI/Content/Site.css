@@ -98,6 +98,12 @@ textarea {
     float:right;
 }
 
+.exporters {
+    font-size: 20px;
+    float:left;
+    padding-top:15px;
+}
+
 .shoppingProductsList {
     float: left;
     width: 70%;
@@ -118,4 +124,9 @@ textarea {
 .shoppingCartTitle {
     margin-left: 10px;
     margin-top: 10px;
+}
+
+.dialog{
+   background-color:#ddd;
+   font-size:20px;
 }

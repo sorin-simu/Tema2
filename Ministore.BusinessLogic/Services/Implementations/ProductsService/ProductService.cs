@@ -6,8 +6,9 @@ using Ministore.CrossCuttingConcerns.DTOs;
 using Ministore.DataAccess.Mappers;
 using Ministore.DataAccess.UnitOfWork;
 using Ninject.Infrastructure.Language;
+using Ministore.CrossCuttingConcerns.Utils;
 
-namespace Ministore.BusinessLogic.Services.Implementations
+namespace Ministore.BusinessLogic.Services.Implementations.ProductsService
 {
     public class ProductService : BaseService,IProductService
     {
@@ -37,6 +38,5 @@ namespace Ministore.BusinessLogic.Services.Implementations
         {
             UnitOfWork.ProductRepository.DeleteProduct(deletedProduct);
         }
-
     }
 }

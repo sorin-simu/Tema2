@@ -46,7 +46,11 @@
     <Compile Include="Infrastructure\BusinessLogicModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseService.cs" />
-    <Compile Include="Services\Implementations\ProductService.cs" />
+    <Compile Include="Services\Implementations\ProductsService\CsvExporter.cs" />
+    <Compile Include="Services\Implementations\ProductsService\FactoryExporter.cs" />
+    <Compile Include="Services\Implementations\ProductsService\IExporter.cs" />
+    <Compile Include="Services\Implementations\ProductsService\JsonExporter.cs" />
+    <Compile Include="Services\Implementations\ProductsService\ProductService.cs" />
     <Compile Include="Services\Implementations\UserService.cs" />
     <Compile Include="Services\Interfaces\IBaseService.cs" />
     <Compile Include="Services\Interfaces\IProductService.cs" />
